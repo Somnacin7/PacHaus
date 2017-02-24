@@ -6,9 +6,27 @@ public class PacmanMove : MonoBehaviour {
     public float speed = 0.4f;
     Vector2 dest = Vector2.zero;
 
+    private Vector2 curInput = Vector2.zero;
+    private Vector2 curDir = Vector2.zero;
+
+
     // Use this for initialization
     void Start() {
         dest = transform.position;
+    }
+
+    void Update() {
+        var x = Input.GetAxis("Horizontal");
+        var y = Input.GetAxis("Vertical");
+
+
+        // Check if we are getting input
+        if (!(x == 0 && y == 0)) {
+            curInput = new Vector2(Mathf.Sign(x), Mathf.Sign(y));
+            // Mathf.Sign returns 1 for + and 0, we need to know which it is
+            curInput.x = (x == 0) ? 0 : curInput.x;
+            curInput.y = (y == 0) ? 0 : curInput.y;
+        }
     }
 
     void FixedUpdate() {
@@ -16,15 +34,25 @@ public class PacmanMove : MonoBehaviour {
         Vector2 p = Vector2.MoveTowards(transform.position, dest, speed);
         GetComponent<Rigidbody2D>().MovePosition(p);
 
-        // Check for Input if not moving
         if ((Vector2) transform.position == dest) {
-            if (Input.GetKey(KeyCode.UpArrow) && Valid(Vector2.up))
+            if (curInput.y == 1 && Valid(Vector2.up))
+                curDir = curInput;
+            if (curInput.x == 1 && Valid(Vector2.right))
+                curDir = curInput;
+            if (curInput.y == -1 && Valid(-Vector2.up))
+                curDir = curInput;
+            if (curInput.x == -1 && Valid(-Vector2.right))
+                curDir = curInput;
+        }
+
+        if ((Vector2) transform.position == dest) {
+            if (curDir.y == 1 && Valid(Vector2.up))
                 dest = (Vector2) transform.position + Vector2.up;
-            if (Input.GetKey(KeyCode.RightArrow) && Valid(Vector2.right))
+            if (curDir.x == 1 && Valid(Vector2.right))
                 dest = (Vector2) transform.position + Vector2.right;
-            if (Input.GetKey(KeyCode.DownArrow) && Valid(-Vector2.up))
+            if (curDir.y == -1 && Valid(-Vector2.up))
                 dest = (Vector2) transform.position - Vector2.up;
-            if (Input.GetKey(KeyCode.LeftArrow) && Valid(-Vector2.right))
+            if (curDir.x == -1 && Valid(-Vector2.right))
                 dest = (Vector2) transform.position - Vector2.right;
         }
 
@@ -37,6 +65,7 @@ public class PacmanMove : MonoBehaviour {
         // Cast Line from 'next to Pac-Man' to 'Pac-Man'
         Vector2 pos = transform.position;
         RaycastHit2D hit = Physics2D.Linecast(pos + dir, pos);
-        return (hit.collider == GetComponent<Collider2D>());
+        Debug.DrawLine(pos + dir, pos, Color.green);
+        return (hit.collider == GetComponent<Collider2D>() || hit.collider.gameObject.GetComponent<Pacdot>() != null);
     }
 }

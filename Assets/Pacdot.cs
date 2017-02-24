@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pacdot : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col) {
-        if (col.name == "Pacman") {
+        if (col.tag == "Player") {
             Destroy(gameObject);
         }
     }
