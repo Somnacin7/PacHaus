@@ -26,8 +26,8 @@ public class GhostMove : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        if (col.name == "Pacman") {
-            Destroy(col.gameObject);
+        if (col.tag == "Player") {
+                col.gameObject.GetComponent<PacmanMove>().Die();
         }
     }
 }

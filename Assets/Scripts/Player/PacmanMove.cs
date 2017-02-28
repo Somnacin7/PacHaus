@@ -8,11 +8,13 @@ public class PacmanMove : MonoBehaviour {
 
     private Vector2 curInput = Vector2.zero;
     private Vector2 curDir = Vector2.zero;
+    private DeathEvents deathEvents;
 
 
     // Use this for initialization
     void Start() {
         dest = transform.position;
+        deathEvents = gameObject.GetComponent<DeathEvents>();
     }
 
     void Update() {
@@ -30,6 +32,7 @@ public class PacmanMove : MonoBehaviour {
     }
 
     void FixedUpdate() {
+
         // Move closer to Destination
         Vector2 p = Vector2.MoveTowards(transform.position, dest, speed);
         GetComponent<Rigidbody2D>().MovePosition(p);
@@ -66,6 +69,13 @@ public class PacmanMove : MonoBehaviour {
         Vector2 pos = transform.position;
         RaycastHit2D hit = Physics2D.Linecast(pos + dir, pos);
         Debug.DrawLine(pos + dir, pos, Color.green);
-        return (hit.collider == GetComponent<Collider2D>() || hit.collider.gameObject.GetComponent<Pacdot>() != null);
+        return (hit.collider == GetComponent<Collider2D>() || hit.collider.gameObject.tag == "dot");
+    }
+
+    public void Die() {
+
+        Destroy(gameObject);
+
+        deathEvents.TriggerDie();
     }
 }
