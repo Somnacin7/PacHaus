@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour {
             playerDeathEvents = player.GetComponent<DeathEvents>();
             playerPacdotPickupEvents = player.GetComponent<PacdotPickup>();
         }
-
     }
 
     void OnEnable() {
@@ -82,7 +81,8 @@ public class GameManager : MonoBehaviour {
         if (currentLives > 0) {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         } else {
-            Time.timeScale = 0;
+            SceneManager.LoadScene(2);
+            Destroy(gameObject);
         }
     }
 
