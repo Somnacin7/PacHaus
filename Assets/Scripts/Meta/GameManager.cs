@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour {
     public int numberOfLives = 3;
     private int currentLives = 0;
 
-    private int count = 0;
-
     private static GameManager _instance;
 
     public static GameManager Instance { get { return _instance; } }
@@ -67,7 +65,6 @@ public class GameManager : MonoBehaviour {
     }
 
     void OnSceneLoaded(Scene prevScene, LoadSceneMode mode) {
-        Debug.Log("count: " + ++count);
         Setup();
         RegisterEvents();
     }

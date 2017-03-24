@@ -15,7 +15,6 @@ public class PacdotPickup : MonoBehaviour {
     }
 
     public void Pickup() {
-        Debug.Log("dot pickup");
         if (OnDotPickup != null) {
             OnDotPickup();
         }

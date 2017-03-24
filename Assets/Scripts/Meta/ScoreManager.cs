@@ -33,8 +33,6 @@ public class ScoreManager : MonoBehaviour {
     }
 
     void Setup() {
-
-        Debug.Log(scoreText);
         if (scoreText == null) {
             var go = GameObject.FindGameObjectWithTag("scoreText");
             var text = go.GetComponent<Text>();
