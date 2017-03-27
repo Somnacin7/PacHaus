@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 50658854082128284}
   - component: {fileID: 58174743387859748}
   - component: {fileID: 114401153487653204}
-  - component: {fileID: 114634489844132786}
+  - component: {fileID: 114219167363427392}
   m_Layer: 0
-  m_Name: elyse
+  m_Name: james
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,6 +78,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.8
+--- !u!114 &114219167363427392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755986419026226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257df6d8073c60c498829f5f20b139d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMode: 0
+  scatterTarget: {x: 0, y: -2}
 --- !u!114 &114401153487653204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,19 +104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originOffset: {x: 1, y: 1}
   speed: 0.3
---- !u!114 &114634489844132786
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1755986419026226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee280ad40ee74004c9bd19948e0a29aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMode: 0
-  scatterTarget: {x: 25, y: 32}
 --- !u!212 &212581437375880822
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -135,7 +135,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d974a4259bc93c34facbcdf246c6a6af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0677cc47d46b9174bb4180414eebc191, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

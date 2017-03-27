@@ -6,6 +6,8 @@ public class PacmanMove : MonoBehaviour {
     public float speed = 0.4f;
     Vector2 dest = Vector2.zero;
 
+    public Vector2 currentDirection { get; set; }
+
     private Vector2 curInput = Vector2.zero;
     private Vector2 curDir = Vector2.zero;
     private DeathEvents deathEvents;
@@ -13,6 +15,7 @@ public class PacmanMove : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        currentDirection = Vector2.zero;
         dest = transform.position;
         deathEvents = gameObject.GetComponent<DeathEvents>();
     }
@@ -42,24 +45,33 @@ public class PacmanMove : MonoBehaviour {
                 curDir = curInput;
             if (curInput.x == 1 && Valid(Vector2.right))
                 curDir = curInput;
-            if (curInput.y == -1 && Valid(-Vector2.up))
+            if (curInput.y == -1 && Valid(Vector2.down))
                 curDir = curInput;
-            if (curInput.x == -1 && Valid(-Vector2.right))
+            if (curInput.x == -1 && Valid(Vector2.left))
                 curDir = curInput;
         }
 
         if ((Vector2) transform.position == dest) {
-            if (curDir.y == 1 && Valid(Vector2.up))
+            if (curDir.y == 1 && Valid(Vector2.up)) {
                 dest = (Vector2) transform.position + Vector2.up;
-            if (curDir.x == 1 && Valid(Vector2.right))
+                currentDirection = Vector2.up;
+            }
+            if (curDir.x == 1 && Valid(Vector2.right)) {
                 dest = (Vector2) transform.position + Vector2.right;
-            if (curDir.y == -1 && Valid(-Vector2.up))
-                dest = (Vector2) transform.position - Vector2.up;
-            if (curDir.x == -1 && Valid(-Vector2.right))
-                dest = (Vector2) transform.position - Vector2.right;
+                currentDirection = Vector2.right;
+            }
+            if (curDir.y == -1 && Valid(Vector2.down)) {
+                dest = (Vector2) transform.position + Vector2.down;
+                currentDirection = Vector2.down;
+            }
+            if (curDir.x == -1 && Valid(Vector2.left)) {
+                dest = (Vector2) transform.position + Vector2.left;
+                currentDirection = Vector2.left;
+            }
         }
 
         Vector2 dir = dest - (Vector2) transform.position;
+        Debug.Log(dir);
         GetComponent<Animator>().SetFloat("x", dir.x);
         GetComponent<Animator>().SetFloat("y", dir.y);
     }
