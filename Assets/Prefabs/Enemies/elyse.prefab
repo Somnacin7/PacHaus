@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114634489844132786}
   m_Layer: 0
   m_Name: elyse
-  m_TagString: Untagged
+  m_TagString: Blinky
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1755986419026226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19, y: 17, z: 0}
+  m_LocalPosition: {x: 27, y: 30, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originOffset: {x: 1, y: 1}
-  speed: 0.3
+  speed: 0.25
 --- !u!114 &114634489844132786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee280ad40ee74004c9bd19948e0a29aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMode: 0
-  scatterTarget: {x: 25, y: 32}
+  currentMode: 1
+  scatterTarget: {x: 26, y: 34}
 --- !u!212 &212581437375880822
 SpriteRenderer:
   m_ObjectHideFlags: 1

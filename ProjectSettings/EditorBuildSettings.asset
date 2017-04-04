@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/startMenu.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/fisthaus.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/gameOver.unity
+  - enabled: 1
+    path: Assets/Scenes/fisthaus.unity
+  - enabled: 1
+    path: Assets/Scenes/startMenu.unity
+  - enabled: 1
+    path: Assets/Scenes/gameOver.unity

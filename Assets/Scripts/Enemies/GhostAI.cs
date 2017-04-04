@@ -67,6 +67,10 @@ public class GhostAI : MonoBehaviour {
         target = targeter.GetTarget();
     }
 
+    void OnDrawGizmos() {
+        Gizmos.DrawCube(target, Vector3.one);
+    }
+
     void FixedUpdate() {
         // Move closer to Destination
         Vector2 p = Vector2.MoveTowards(transform.position, dest, speed);
@@ -75,8 +79,6 @@ public class GhostAI : MonoBehaviour {
         if ((Vector2) transform.position == dest) {
             dest = GetNextDest();
             curDir = (dest - (Vector2) transform.position).normalized;
-            Debug.Log("Pos:\t" + GetTilePosition());
-            Debug.Log("Dest:\t" + dest);
         }
     }
 

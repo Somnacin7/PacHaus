@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PinkyTargeter : GhostTargeter {
 
-    public Vector2 scatterTarget = new Vector2(0, -2);
+    public Vector2 scatterTarget = new Vector2(3, 34);
 
     public override Vector2 GetTarget() {
         if (currentMode == GhostTargetMode.SCATTER) {
